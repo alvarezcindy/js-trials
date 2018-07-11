@@ -8,9 +8,13 @@ let businessName = "Balloonicorn's Cupcake Shop";
 
 const addresses = ["123 Main Street", "683 Sutter Street", "1600 Pennsylvania Ave"];
 
-const phoneNumbers = new Map();
+const phoneNumbers = new Map([['home', '510-867-5309'], 
+							 ['mobile', '415-555-1212'], 
+							 ['business', '415-123-4567']]);
 
 // Add some phone numbers to our map
+
+const accountTransactions = new Map();
 
 
 
@@ -19,16 +23,27 @@ const phoneNumbers = new Map();
 
 // Add function to print account information 
 
-function printAccountInformation(name, number, businessName) {
-	console.log('Account Holder Name: ', name);
-	console.log('Account Holder Number: ', number);
+function printAccountInfo(accountHolder, accountNumber, businessName) {
+	console.log('Account Holder Name: ', accountHolder);
+	console.log('Account Holder Number: ', accountNumber);
 	console.log('Business Name: ', businessName);
 }
 
 // Add function to print all addresses, including a header
-
+function showAddresses(addresses) {
+	console.log('Addresses:');
+	for (let address of addresses) {
+		console.log(address);
+	}
+}
 
 // Add function to print phone types and numbers
+function showPhoneNums(phoneNumbers) {
+	console.log('Phone Numbers: ');
+	for (let [key, value] of phoneNumbers) {
+		console.log(key, ": ", value);
+	}
+}
 
 
 // ///////////////////////////////////////////////////////
@@ -39,6 +54,9 @@ function printAccountInformation(name, number, businessName) {
 
 // Add function to add transactions
 
+function addTransaction(date, amount) {
+	accountTransactions.set(date, amount);
+}
 
 // Use the function to add transactions
 
@@ -91,6 +109,14 @@ function printAccountInformation(name, number, businessName) {
 
 // Add a function for weekly hours
 
+// printAccountInfo(accountHolder, accountNumber, businessName)
+// showAddresses(addresses)
+// showPhoneNums(phoneNumbers);
 
+addTransaction('May-2', '-500');
+addTransaction('May-13', '+1,200');
+addTransaction('May-15', '-100');
+addTransaction('May-21', '-359');
+addTransaction('May-29', '+2,200');
 
-
+console.log(accountTransactions);
