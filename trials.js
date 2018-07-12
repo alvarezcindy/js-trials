@@ -13,8 +13,17 @@ const phoneNumbers = new Map([['home', '510-867-5309'],
 							 ['business', '415-123-4567']]);
 
 // Add some phone numbers to our map
-
 const accountTransactions = new Map();
+
+const customer = {
+	accountHolder: accountHolder,
+	accountNumber: accountNumber,
+	businessName: businessName,
+	addresses: addresses,
+	phoneNumbers: phoneNumbers,
+	transactions: accountTransactions,
+	startingBalance: 26000
+};
 
 
 
@@ -96,10 +105,12 @@ function showTransactions(accountTransactions, beginningBalance) {
 
 
 // ///////////////////////////////////////////////////////
-// All Customer Info:
 
 // Make an object with customer info
-
+function addCustomerInfo(favoriteMelon = 'Cantaloupe', numPets = 0) {
+	customer.favoriteMelon = favoriteMelon;
+	customer.numPets = numPets;
+}
 
 // Function to add customer attributes
 
@@ -147,10 +158,14 @@ function showTransactions(accountTransactions, beginningBalance) {
 // showPhoneNums(phoneNumbers);
 
 
-addTransaction('May-2', -500);
-addTransaction('May-13', 1200);
-addTransaction('May-15', -100);
-addTransaction('May-21', -359);
-addTransaction('May-29', +2200);
+// addTransaction('May-2', -500);
+// addTransaction('May-13', 1200);
+// addTransaction('May-15', -100);
+// addTransaction('May-21', -359);
+// addTransaction('May-29', +2200);
 
-showTransactions(accountTransactions, 26000);
+// showTransactions(accountTransactions, 26000);
+
+console.log(customer);
+addCustomerInfo('Casaba', 2);
+console.log(customer);
