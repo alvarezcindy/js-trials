@@ -12,7 +12,6 @@ const phoneNumbers = new Map([['home', '510-867-5309'],
 							 ['mobile', '415-555-1212'], 
 							 ['business', '415-123-4567']]);
 
-// Add some phone numbers to our map
 const accountTransactions = new Map();
 
 const customer = {
@@ -57,7 +56,6 @@ function showPhoneNums(phoneNumbers) {
 
 // ///////////////////////////////////////////////////////
 // Transactions:
-
 
 // Add function to add transactions
 
@@ -106,21 +104,37 @@ function showTransactions(accountTransactions, beginningBalance) {
 
 // ///////////////////////////////////////////////////////
 
-// Make an object with customer info
+// Function to add customer attributes
 function addCustomerInfo(favoriteMelon = 'Cantaloupe', numPets = 0) {
 	customer.favoriteMelon = favoriteMelon;
 	customer.numPets = numPets;
 }
 
-// Function to add customer attributes
-
-
-// Add attributes for this user
-
 
 // ///////////////////////////////////////////////////////
 // Getting a Business Loan
+function calculateInterestRate(income, customer) {
+	let isPreferred;
+	if (customer.favoriteMelon === 'Casaba' || customer.numPets > 5) {
+		isPreferred = true;
+	}
 
+	if (income < 100000) {
+		if (isPreferred) {
+			return .05;
+		} else {
+			return .08;
+		}
+	} else if (income > 100000 && income < 200000) {
+		if (isPreferred) {
+			return .04;
+		} else {
+			return .07;
+		}
+	} else {
+		return .04;
+	}
+}
 
 // Function to return loan rate
 
@@ -169,3 +183,4 @@ function addCustomerInfo(favoriteMelon = 'Cantaloupe', numPets = 0) {
 console.log(customer);
 addCustomerInfo('Casaba', 2);
 console.log(customer);
+calculateInterestRate(50000, customer)
