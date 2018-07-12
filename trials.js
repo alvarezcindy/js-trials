@@ -99,6 +99,8 @@ function showTransactions(accountTransactions, beginningBalance) {
 	}
 	console.log('Final Balance:', currentBalance);
 
+	customer.endingBalance = currentBalance;
+
 }
 
 
@@ -113,6 +115,8 @@ function addCustomerInfo(favoriteMelon = 'Cantaloupe', numPets = 0) {
 
 // ///////////////////////////////////////////////////////
 // Getting a Business Loan
+
+// Function to return loan rate
 function calculateInterestRate(income, customer) {
 	let isPreferred;
 	if (customer.favoriteMelon === 'Casaba' || customer.numPets > 5) {
@@ -136,14 +140,29 @@ function calculateInterestRate(income, customer) {
 	}
 }
 
-// Function to return loan rate
-
 
 // ///////////////////////////////////////////////////////
 // Account Report
 
 
 // Add function to show bank customer report
+function accountReport(customer) {
+	printAccountInfo(customer.accountHolder,
+	 				 customer.accountNumber,
+	  				 customer.businessName);
+
+	showAddresses(customer.addresses);
+
+	showPhoneNums(customer.phoneNumbers);
+
+	console.log('Starting Balance:', customer.startingBalance);
+
+	console.log('Ending Balance:', customer.endingBalance);
+
+	if (customer.favoriteMelon === 'Casaba' || customer.numPets > 5) {
+		console.log('Congratulations on being a premiere customer!');
+	}
+}
 
 
 
@@ -172,15 +191,23 @@ function calculateInterestRate(income, customer) {
 // showPhoneNums(phoneNumbers);
 
 
-// addTransaction('May-2', -500);
-// addTransaction('May-13', 1200);
-// addTransaction('May-15', -100);
-// addTransaction('May-21', -359);
-// addTransaction('May-29', +2200);
+addTransaction('May-2', -500);
+addTransaction('May-13', 1200);
+addTransaction('May-15', -100);
+addTransaction('May-21', -359);
+addTransaction('May-29', +2200);
 
-// showTransactions(accountTransactions, 26000);
+showTransactions(accountTransactions, 26000);
 
-console.log(customer);
+
+console.log()
+console.log()
+console.log()
+console.log()
+
 addCustomerInfo('Casaba', 2);
-console.log(customer);
-calculateInterestRate(50000, customer)
+
+// let rate = calculateInterestRate(150000, customer);
+// console.log(rate);
+
+accountReport(customer);
