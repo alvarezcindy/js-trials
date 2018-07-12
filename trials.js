@@ -49,8 +49,6 @@ function showPhoneNums(phoneNumbers) {
 // ///////////////////////////////////////////////////////
 // Transactions:
 
-// Create an empty map of transactions
-
 
 // Add function to add transactions
 
@@ -58,13 +56,43 @@ function addTransaction(date, amount) {
 	accountTransactions.set(date, amount);
 }
 
-// Use the function to add transactions
-
-
 // Add function to show balance status
-
+function showBalanceStatus(balanceAmount) {
+	console.log('Balance:');
+	if (balanceAmount < 0) {
+		console.log('YOU ARE OVERDRAWN, LOSER');
+	} else if (balanceAmount >= 0 && balanceAmount < 20) {
+		console.log('Warning: You are close to zero blance, manage your money better');
+	} else {
+		console.log('Thank you for your business.')
+	}
+}
 
 // Add function to show transactions
+function showTransactions(accountTransactions, beginningBalance) {
+	let transactionType;
+	let currentBalance = beginningBalance;
+
+	console.log('Beginning Balance:', beginningBalance);
+
+	for (let [date, amount] of accountTransactions) {
+		if (amount > 0) {
+			transactionType = 'Deposit';
+		} else {
+			transactionType = 'Withdrawal';
+		}
+		currentBalance += amount;
+		console.log('Transaction Date:', date);
+		console.log(transactionType, 'of', amount);
+		console.log('Current Balance:', currentBalance);
+	}
+	if (currentBalance < 0) {
+		console.log ('Account Balance Fee of $25');
+		currentBalance -= 25;
+	}
+	console.log('Final Balance:', currentBalance);
+
+}
 
 
 // ///////////////////////////////////////////////////////
@@ -109,14 +137,20 @@ function addTransaction(date, amount) {
 
 // Add a function for weekly hours
 
+
+//Function Calls
+
 // printAccountInfo(accountHolder, accountNumber, businessName)
+
 // showAddresses(addresses)
+
 // showPhoneNums(phoneNumbers);
 
-addTransaction('May-2', '-500');
-addTransaction('May-13', '+1,200');
-addTransaction('May-15', '-100');
-addTransaction('May-21', '-359');
-addTransaction('May-29', '+2,200');
 
-console.log(accountTransactions);
+addTransaction('May-2', -500);
+addTransaction('May-13', 1200);
+addTransaction('May-15', -100);
+addTransaction('May-21', -359);
+addTransaction('May-29', +2200);
+
+showTransactions(accountTransactions, 26000);
